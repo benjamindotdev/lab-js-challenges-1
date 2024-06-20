@@ -153,11 +153,22 @@ const matrix = [
 
 const greatestProduct = (matrix) => {
   let greatest = 0;
+  //horizontal
   matrix.forEach((row) => {
     for (let i = 0; i < row.length - 4; i++) {
       let product = row[i] * row[i + 1] * row[i + 2] * row[i + 3];
       product > greatest ? (greatest = product) : null;
     }
   });
+
+  //vertical
+  for (let i = 0; i < matrix.length - 4; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      let product =
+        matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j];
+      product > greatest ? (greatest = product) : null;
+    }
+  }
+
   return greatest;
 };
